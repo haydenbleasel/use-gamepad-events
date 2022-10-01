@@ -22,7 +22,7 @@ export type GamepadState = {
 type UseGamepadEventsProps = {
   onConnect?: () => void;
   onDisconnect?: () => void;
-  onReady?: () => void;
+  onReady?: (gamepad: Gamepad) => void;
   onLoop?: () => void;
 };
 
@@ -128,7 +128,7 @@ const useGamepadEvents = (
       return;
     }
 
-    onReady?.();
+    onReady?.(newGamepad);
     setReady(true);
   }, [gamepad, onReady, ready, setReady]);
 

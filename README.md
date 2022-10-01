@@ -15,7 +15,7 @@ import { useGamepadEvents } from '@haydenbleasel/use-gamepad-events';
 
 const App = () => {
   const gamepadEvents = useGamepadEvents({
-    onConnect: () => console.log('Gamepad connected'),
+    onConnect: (gamepad) => console.log(`Gamepad ${gamepad.id} connected`),
     onDisconnect: () => console.log('Gamepad disconnected'),
     onReady: () => console.log('Gamepad ready'),
   });
