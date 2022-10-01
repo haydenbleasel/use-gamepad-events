@@ -179,21 +179,21 @@ const useGamepadEvents = (
     setRunning(true);
   }, [gameloop, gamepad, gamepadState, running]);
 
-  const on = (event: keyof GamepadState, callback: () => void) => {
-    if (!gamepadState[event]) {
+  const on = (button: keyof GamepadState, callback: () => void) => {
+    if (!gamepadState[button]) {
       return;
     }
 
     const now = Date.now();
 
-    if (!lastFiredButton || !lastFiredTime || lastFiredButton !== event) {
-      lastFiredButton = event;
+    if (!lastFiredButton || !lastFiredTime || lastFiredButton !== button) {
+      lastFiredButton = button;
       lastFiredTime = now;
       callback();
       return;
     }
 
-    if (now - lastFiredTime < 100 && lastFiredButton === event) {
+    if (now - lastFiredTime < 100 && lastFiredButton === button) {
       lastFiredTime = now;
       return;
     }

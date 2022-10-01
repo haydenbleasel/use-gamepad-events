@@ -10,6 +10,8 @@ yarn add @haydenbleasel/use-gamepad-events
 
 ## Usage
 
+Here's a simple example of how to use `useGamepadEvents` to listen for 'a' button presses:
+
 ```tsx
 import { useGamepadEvents } from '@haydenbleasel/use-gamepad-events';
 
@@ -25,6 +27,40 @@ const App = () => {
   });
 
   return <p>Hello, world.</p>;
+};
+```
+
+Here's a more complex example that uses multiple gamepad event emitters to control the `window`.
+
+```tsx
+const useGamepadNavigation = (): void => {
+  const { open } = useCommandBar();
+  const gamepadEvents = useGamepadEvents({
+    onReady: (gamepad) => {
+      window.alert(
+        `${gamepad.id} connected. Press START to reload the page, SELECT to go back and use the D-Pad to navigate.`
+      );
+    },
+  });
+
+  gamepadEvents.on('options', window.reload);
+  gamepadEvents.on('share', window.back);
+
+  gamepadEvents.on('down', () => {
+    if (typeof window === 'undefined' || open) {
+      return;
+    }
+
+    window.scrollTo({ top: window.scrollY + window.innerHeight });
+  });
+
+  gamepadEvents.on('up', () => {
+    if (typeof window === 'undefined' || open) {
+      return;
+    }
+
+    window.scrollTo({ top: window.scrollY - window.innerHeight });
+  });
 };
 ```
 
