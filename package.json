@@ -1,6 +1,6 @@
 {
   "name": "@haydenbleasel/use-gamepad-events",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A tiny, SSR-friendly hook for listening to gamepad events.",
   "files": [
     "dist"
