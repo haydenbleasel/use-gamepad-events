@@ -73,6 +73,6 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@react-hookz/web": "^15.1.0"
+    "@react-hookz/web": "^16.1.0"
   }
 }
