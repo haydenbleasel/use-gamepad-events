@@ -74,6 +74,6 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@react-hookz/web": "^18.0.1"
+    "@react-hookz/web": "^20.0.3"
   }
 }
